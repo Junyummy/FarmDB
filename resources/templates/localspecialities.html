@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>마을봐봐 특산물</title>
+    <style>
+        body {
+            background-color: #f7f2e7;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 16px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #8a6e55;
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+        
+        .header-link {
+            color: white; /* 글씨 색상을 하얀색으로 설정 */
+            padding: 5px 10px; /* 패딩 추가 */
+            margin: 0 10px; /* 좌우 마진 추가 */
+            background-color: #8a6e55; /* 배경색 설정 */
+            border-radius: 5px; /* 둥근 모서리 */
+            text-decoration: none; /* 텍스트 밑줄 제거 */
+            transition: background-color 0.3s; /* 호버 효과를 위한 전환 */
+        }
+
+        .header-link:hover {
+            background-color: #a38870; /* 호버 시 배경색 변경 */
+        }
+
+        .center {
+            margin: auto;
+            width: 50%;
+            padding: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        th {
+            background-color: #a38870;
+            color: white;
+        }
+
+        img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+        }
+
+        a {
+            color: #5c483b;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #8a6e55;
+        }
+
+        .navigation a {
+            padding: 5px 10px;
+            background-color: #8a6e55;
+            color: white;
+            border-radius: 5px;
+            margin: 0 10px;
+        }
+
+        .navigation a:hover {
+            background-color: #a38870;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h3>특산물 목록</h3>
+        <div class="center">
+			<a class="header-link" th:href="@{/siteuser/start}">홈으로</a>
+            <a class="header-link" th:href="@{/siteuser/logout}">사용자 로그아웃</a>
+        </div>
+    </div>
+    
+<table style="width:100%">
+    <tr>
+		<th>사진</th>
+		<th>특산물ID</th>
+        <th>이름</th>
+        <th>상품유형</th>
+        <th>가격</th>
+        <th>단위</th>
+    </tr>
+    
+    <tr th:each="c: ${localspecialities}">
+		<td><a th:href="@{/siteuser/lsread?num={id}(id=${c.id})}">
+            <img th:src="${c.photourl}" alt="lsPhoto" style="width:100px;height:100px;"></a></td>
+		<td th:text = "${c.id}"></td>
+		<td><a th:href="@{/siteuser/lsread?num={id}(id=${c.id})}" th:text="${c.name}"></a></td>
+		<td th:text = "${c.category}"></td>
+		<td th:text = "${c.price}"></td>
+		<td th:text = "${c.unit}"></td>
+	<tr>
+    	<td colspan="5">
+            <th:block th:each="p:${#numbers.sequence(1, localspecialities.totalPages)}">
+            <a th:href="@{/siteuser/localspecialities?pno={p}(p=${p-1})}">[[${p}]]</a>
+    </tr>
+</table>
+</body>
+</html>

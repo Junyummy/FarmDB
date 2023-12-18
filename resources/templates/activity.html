@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>체험활동</title>
+<style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f2e7; /* Soft beige background */
+            color: #333;
+        }
+
+        .header {
+            background-color: #8a6e55; /* Brown header background */
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Adds subtle shadow to header */
+        }
+
+        table {
+            width: 80%; /* Adjusted table width for better spacing */
+            border-collapse: collapse;
+            margin: 20px auto; /* Centers the table with a margin on top and bottom */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Adds subtle shadow to table */
+        }
+
+        th, td {
+            padding: 15px; /* More padding for table cells */
+            text-align: left;
+            border-bottom: 1px solid #ddd; /* Light grey border for cells */
+        }
+
+        th {
+            background-color: #ffefd5; /* Light peach background for headers */
+            color: #333; /* Dark text for contrast */
+            font-weight: bold;
+        }
+
+        td {
+            background-color: #ffffff; /* White background for table cells */
+        }
+
+        a {
+            color: #5c483b; /* Dark brown text to match the theme */
+            text-decoration: none;
+            padding: 10px 15px;
+            background-color: #a38870; /* Light brown background for buttons */
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #8a6e55; /* Darker brown for hover effect */
+            color: white;
+        }
+
+        .button {
+	    color: #fff; /* White text color */
+	    background-color: #8a6e55; /* Brown background color */
+	    text-decoration: none;
+	    padding: 10px 20px;
+	    border-radius: 5px;
+	    display: inline-block; /* Allows margin to center the button */
+	    margin: 10px;
+	    transition: background-color 0.3s ease;
+	    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+	    font-size: 16px;
+	    font-weight: bold;
+	    cursor: pointer; /* Cursor changes to pointer to indicate it's clickable */
+		}
+		
+		.button:hover {
+		    background-color: #a38870; /* Light brown for hover effect */
+		    color: white;
+		}
+
+
+        .img-container {
+            text-align: center; /* Centers images within the container */
+        }
+
+        .img-container img {
+            max-width: 80%; /* Larger images */
+            margin-top: 10px; /* Adds space above the image */
+            border-radius: 10px; /* Rounded corners for images */
+            transition: transform 0.3s ease; /* Smooth transition for hover effect */
+        }
+
+        .img-container img:hover {
+            transform: scale(1.05); /* Slightly enlarges the image on hover */
+        }
+
+        /* Footer styles */
+        .footer {
+            background-color: #5c483b; /* Dark brown footer background */
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -2px 4px rgba(0,0,0,0.1); /* Adds shadow to top of footer */
+        }
+
+        /* Adjustments for mobile responsiveness */
+        @media (max-width: 768px) {
+            table, .img-container img {
+                width: 95%; /* Full width on smaller screens */
+            }
+            .header, .footer {
+                padding: 10px 0; /* Less padding on smaller screens */
+            }
+        }
+    </style>
+
+</head>
+<body>
+	
+	<div style="text-align: center;">
+        <h3>체험활동</h3>
+        <a th:href="@{/siteuser/start}" class="button">홈으로</a>
+        <a th:href="@{/siteuser/activities}" class="button">체험활동 목록</a>
+        <a th:href="@{/siteuser/reservation/{id}(id=${activity.id})}" class="button">예약하기</a>
+    </div>
+
+
+	
+	<table style="width: 100%">
+        <tr>
+            <th>활동번호</th>
+            <td>[[${activity.id}]]</td>
+        </tr>
+        <tr>
+            <th>활동이름</th>
+            <td>[[${activity.name}]]</td>
+        </tr>
+        <tr>
+            <th>장소</th>
+            <td>[[${activity.address}]]</td>
+        </tr>
+        <tr>
+            <th>가격</th>
+            <td>[[${activity.money}]]</td>
+        </tr>
+        <tr>
+            <th>모집인원</th>
+            <td>[[${activity.person}]]</td>
+        </tr>
+        <tr>
+            <th>연락처</th>
+            <td>[[${activity.phone}]]</td>
+        </tr>
+        <tr>
+            <th>내용</th>
+            <td>[[${activity.note}]]</td>
+        </tr>
+        <tr>
+            <th>이미지</th>
+            <td>
+                <div class="img-container">
+                    <img th:if="${activity.photourl}" th:src="@{{photourl}(photourl=${activity.photourl})}" alt="Image" style="max-width: 300px;">
+                </div>
+            </td>
+        </tr>
+    </table>
+	
+
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>사용자 검색</title>
+    <style>
+        body {
+            background-color: #f7f2e7;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            margin: 0;
+            padding: 0;
+        }
+        
+        h3 {
+            color: #5c483b;
+	        font-size: 30px;
+	        margin: 0;
+	        padding: 20px;
+	        text-align: center;
+        }
+        
+        form {
+            margin: 0 auto;
+            width: 25%;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        input[type="email"] {
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+        
+        input[type="reset"],
+        input[type="submit"],
+        a {
+            background-color: #8a6e55; /* 버튼 및 링크 배경색을 갈색으로 변경 */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 16px;
+            text-decoration: none;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        input[type="reset"]:hover,
+        input[type="submit"]:hover,
+        a:hover {
+            background-color: #a38870; /* 호버 시 더 밝은 갈색으로 변경 */
+            color: #fff;
+        }
+        
+    </style>
+</head>
+<body>
+    <h3>사용자 검색</h3>
+    <form action="#" th:action="@{/siteuser/find}" method="post">
+        <label for="email">이메일</label>
+        <input type="email" name="email" id="email"/>
+        <input type="reset" value="취소" />
+        <input type="submit" value="검색" />
+        <p><a href="/siteuser/login">로그인하러 가기</a></p>
+        <p><a href="/siteuser/signup">아이디가 없으시나요?</a></p>
+    </form>
+</body>
+</html>

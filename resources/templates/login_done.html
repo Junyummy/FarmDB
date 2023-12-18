@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>로그인 완료</title>
+    <style>
+        body {
+            background-color: #f7f2e7;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            margin: 0;
+            padding: 0;
+        }
+
+        h3 {
+            color: #5c483b;
+            font-size: 30px;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        li {
+            display: inline-block;
+            margin: 0 10px;
+            border-radius: 5px;
+        }
+
+        a {
+            color: #fff; /* 글씨 색상을 하얀색으로 변경 */
+            text-decoration: none;
+            transition: color 0.2s ease-in-out;
+            background-color: #8a6e55; /* 버튼 배경색을 브라운색으로 변경 */
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        a:hover {
+            background-color: #5c483b; /* 호버 시 더 어두운 브라운색으로 변경 */
+            color: #fff;
+        }
+        
+        .center {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="center">
+        <h3>로그인 완료</h3>
+        <br><br><br><br>
+        <ul>
+            <li><a th:href="@{/siteuser/start}">홈으로</a></li>
+            <li><a th:href="@{/siteuser/update}">내 정보 수정</a></li>
+            <li><a th:href="@{/siteuser/myreservations}">내 예약정보</a></li>
+            <li><a th:href="@{/siteuser/myorders}">내 주문정보</a></li>
+        </ul>
+    </div>
+</body>
+</html>

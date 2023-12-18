@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>마을봐봐의 임실군 신덕면</title>
+<style>
+    body {
+        background-color: #f7f2e7; /* 부드러운 베이지색 배경 */
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 16px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .header {
+            position: relative; /* Allows absolute positioning inside */
+            text-align: center; /* Center the text */
+            padding: 20px; /* Add some padding */
+            background-color: #8a6e55; /* Brown background */
+            color: white; /* White text color */
+        }
+        .header-logo {
+            position: absolute; /* Position the logo absolutely */
+            left: 10px; /* 10px from the left */
+            top: 50%; /* Center it vertically */
+            transform: translateY(-50%); /* Offset by half the height upwards */
+        }
+        .header-logo img {
+            width: 300px; /* Set the width of your logo */
+            height: auto; /* Maintain aspect ratio */
+        }
+   
+
+    .header h1 {
+        color: #fff; /* 어두운 갈색 */
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .navigation {
+        background-color: #8a6e55; /* 진한 갈색 */
+        padding: 10px 0;
+        text-align: center;
+    }
+
+    .navigation a {
+        color: #fff;
+        text-decoration: none;
+        margin: 0 15px;
+        font-size: 18px;
+        transition: color 0.3s ease-in-out;
+    }
+
+    .navigation a:hover {
+        color: #a38870; /* 밝은 갈색 */
+    }
+
+    .main-content {
+        display: flex;
+        justify-content: space-around;
+        padding: 20px;
+    }
+
+    .content-section {
+        background-color: white;
+        padding: 20px;
+        margin: 20px;
+        width: 30%;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        border-radius: 10px;
+    }
+    
+    /* 이미지 슬라이더 스타일 */
+    .image-slider {
+        position: relative;
+        width: 70%; /* Adjusted width */
+        max-width: 800px; /* Adjusted max width */
+        height: 350px; /* Adjusted height */
+        margin: 50px auto 0; /* Adjusted margin */
+        overflow: hidden;
+        text-align: center;
+    }
+
+    .image-slider img {
+        display: block;
+        margin: auto;
+        max-width: 100%;
+        height: auto;
+        object-fit: cover; /* or 'contain' depending on preference */
+    }
+
+    /* 첫 번째 이미지만 표시 */
+    .image-slider img:first-child {
+        display: block;
+    }
+
+    /* 슬라이더 컨트롤 버튼 스타일 */
+    .image-slider .prev, 
+    .image-slider .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: #8a6e55;
+        color: white;
+        padding: 10px;
+        border: none;
+        font-size: 18px;
+        transition: background-color 0.6s ease;
+    }
+
+    .image-slider .prev { left: 0; }
+    .image-slider .next { right: 0; }
+
+    /* 인디케이터 (점) 스타일 */
+    .image-indicators {
+        position: absolute;
+        bottom: 60px;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+    }
+
+    .image-indicators span {
+        cursor: pointer;
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.6s ease;
+    }
+
+    .image-indicators .active {
+        background-color: #717171;
+    }
+    
+    .content-container {
+	    display: flex;
+	    justify-content: space-between;
+	    align-items: center;
+	}
+	
+	.button-container {
+    width: auto; /* Adjusts width to content size */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    position: absolute; /* Position it independently */
+    right: 0; /* Aligns to the right side */
+    top: 50%; /* Align vertically with slider */
+    transform: translateY(-50%); /* Center align vertically */
+    background-color: #f7f2e7; /* Match the color with the slider's background */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin-right: 20px; /* Adjust space from the right edge */
+}
+
+.button-container a {
+    color: #5c483b; /* Similar color to the slider's text */
+    text-decoration: none;
+    margin: 5px 0; /* Adjusts space between buttons */
+    transition: color 0.3s ease-in-out;
+    padding: 10px; /* Add padding to space out the text */
+    display: block; /* This makes the anchor fill the horizontal space */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Faint border for separation */
+}
+
+.button-container a:last-child {
+    border-bottom: none; /* Removes border from the last item */
+}
+
+
+.button-container a:hover {
+    color: #8a6e55; /* Hover effect color */
+}
+
+
+
+
+    .footer {
+        background-color: #5c483b; /* 어두운 갈색 */
+        color: white;
+        text-align: center;
+        padding: 10px;
+        font-size: 14px;
+        position: fixed; /* 푸터를 화면 하단에 고정 */
+	    bottom: 0; /* 페이지의 맨 아래에 위치 */
+	    left: 0; /* 왼쪽 끝에서 시작 */
+	    width: 100%; /* 푸터가 전체 너비를 차지하도록 설정 */
+	    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2); /* 상단에 그림자 효과를 줌 */
+    }
+    
+</style>
+</head>
+<body>
+    <div class="header">
+    <div class="header-logo">
+        <img src="/img/신덕면.png" alt="임실군 신덕면 로고">
+    </div>
+        <h1>♥ 마을 봐봐 ♥</h1>
+    </div>
+    
+    <div class="navigation">
+        <a href="/siteuser/village_intro">마을소개</a>
+        <a href="/siteuser/tourist">관광지</a>
+        <a href="/siteuser/activities">체험활동</a>
+        <a href="/siteuser/localspecialities">특산물</a>
+    </div>
+    
+    <div class="image-slider">
+        <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+        <button class="next" onclick="changeSlide(1)">&#10095;</button>
+        <img src="/img/복분자.jpg" alt="Image 1" class="slide" style="display: block;">
+    	<img src="/img/고추.jpg" alt="Image 2" class="slide">
+    	<img src="/img/느타리버섯.jpg" alt="Image 3" class="slide">
+    	<img src="/img/고구마.jpg" alt="Image 4" class="slide">
+    	<img src="/img/절임배추.jpg" alt="Image 5" class="slide">
+    	<img src="/img/메주.jpg" alt="Image 6" class="slide">
+        <!-- ... 추가 이미지 ... -->
+        
+        <!-- 인디케이터 (점) -->
+		<div class="image-indicators">
+		    <span onclick="currentSlide(1)" class="dot"></span>
+		    <span onclick="currentSlide(2)" class="dot"></span>
+		    <span onclick="currentSlide(3)" class="dot"></span>
+		    <span onclick="currentSlide(4)" class="dot"></span>
+		    <span onclick="currentSlide(5)" class="dot"></span>
+		    <span onclick="currentSlide(6)" class="dot"></span>
+		    <!-- ... 추가 인디케이터가 필요하면 더 추가하세요 ... -->
+		</div>
+
+
+    </div>
+	
+	
+    
+    <div class="button-container">
+       <p th:if="${name}" th:text="${name + '님'}" />
+       <a th:unless="${name}" href="/siteuser/login">로그인</a>
+        <a th:if="${name}" href="/siteuser/logout">로그아웃</a>
+       
+        <a href="/siteuser/signup">회원가입</a>
+      <a th:if="${name}"  href="/siteuser/myreservations">내 예약정보</a>
+        <a th:if="${name}" href="/siteuser/myorders">내 주문정보</a>
+    </div>
+
+    <div class="main-content">
+        <div class="content-section">
+            <h2>인사말</h2>
+            <p>우리면은 상사봉 등산로와 거북바위 전설이 숨 쉬는 곳으로 우리 지역 천혜의 생명력이 그대로 담긴 농산물을 생산하고 있습니다.</p>          
+        </div>
+        <div class="content-section">
+            <h2>관광지 소개</h2>
+            <p>우리 신덕면의 대표적인 관광지에는 경각산과 상사봉이 있습니다.</p>
+        </div>
+        <div class="content-section">
+            <h2>체험 활동 소개</h2>
+            <p>우리 신덕면의 대표적인 체험 활동에는 방길낚시캠핑장, 샹크릴라CC 그리고 오궁미술촌이 있습니다.</p>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <!-- 각 섹션의 내용을 여기에 추가하세요 -->
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2023 마을봐봐. All rights reserved.</p>
+    </div>
+    
+    <script>
+    let slideIndex = 1;
+    showSlides(slideIndex); // Start with the first slide
+
+    // Next/previous controls
+    function changeSlide(n) {
+        showSlides(slideIndex += n);
+    }
+
+    // Thumbnail image controls
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        let slides = document.getElementsByClassName("slide");
+        let dots = document.getElementsByClassName("dot");
+
+        if (n > slides.length) {
+            slideIndex = 1; // If n is greater than the number of slides, loop back to the first slide
+        } 
+        if (n < 1) {
+            slideIndex = slides.length; // If n is less than 1, move to the last slide
+        }
+        
+        // Hide all slides
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+        }
+
+        // Remove the "active" class from all dots
+        for (let i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+
+        // Show the current slide and add the "active" class to the current dot
+        slides[slideIndex - 1].style.display = "block";  
+        dots[slideIndex - 1].className += " active";
+    }
+
+    // Auto slide functionality
+    setInterval(function() {
+        changeSlide(1); // Call changeSlide with 1 to move forward
+    }, 5000); // Change image every 5 seconds
+</script>
+
+
+    
+</body>
+</html>

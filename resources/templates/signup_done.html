@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입 완료</title>
+    <style>
+        body {
+            background-color: #f7f2e7; /* Soft beige background */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h3 {
+            color: #5c483b; /* Dark brown text */
+            font-size: 36px;
+            margin: 0;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        form {
+            width: 80%;
+            max-width: 500px; /* Slightly larger max-width */
+            margin: 20px auto; /* More vertical spacing */
+            padding: 30px; /* Increased padding */
+            background-color: #fff;
+            border-radius: 8px; /* Slightly larger border-radius */
+            box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.15); /* Slightly larger shadow */
+        }
+
+        p {
+            font-size: 20px;
+            color: #5c483b; /* Dark brown text */
+            text-align: center;
+            margin: 20px 0; /* Added margin for spacing */
+        }
+
+        a {
+            display: inline-block; /* Changed to inline-block for better control */
+            background-color: #8a6e55; /* Dark brown button */
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-size: 16px; /* Slightly larger font-size */
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        a:hover {
+            background-color: #a38870; /* Lighter brown on hover */
+        }
+    </style>
+</head>
+<body>
+    <h3>회원가입 완료</h3>
+    <br>
+    <form>
+    <p th:text="|${name}님, 회원가입이 완료되었습니다.|" />
+    <br>
+    <p><a href="/siteuser/start">첫 페이지 이동</a></p>
+    </form>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8">
+    <title>사용자 로그인</title>
+    <style>
+      body {
+        background-color: #f7f2e7;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        margin: 0;
+        padding: 0;
+      }
+
+      h3 {
+        color: #5c483b;
+        font-size: 30px;
+        margin: 0;
+        padding: 20px;
+        text-align: center;
+      }
+
+      form {
+        width: 60%;
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+      }
+
+      input[type="email"],
+      input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+        font-size: 16px;
+      }
+
+      input[type="reset"], input[type="submit"], a {
+        background-color: #8a6e55; /* 갈색으로 변경 */
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 5px 10px;
+        cursor: pointer;
+        font-size: 16px;
+        text-decoration: none;
+        transition: background-color 0.2s ease-in-out;
+      }
+
+      input[type="reset"]:hover, input[type="submit"]:hover, a:hover {
+        background-color: #a38870; /* 호버 시 더 밝은 갈색으로 변경 */
+        color: #fff;
+      }
+
+      input[type="submit"]:active {
+        background-color: #5c483b; /* 클릭 시 어두운 갈색으로 변경 */
+      }
+    </style>
+  </head>
+  <body>
+    <h3>사용자 로그인</h3>
+    <form action="#" th:action="@{/siteuser/login}" method="post">
+      <p>이메일 <input type="email" name="email"/></p>
+      <p>암호 <input type="password" name="passwd"/></p>
+      <p>
+        <input type="submit" value="로그인" />
+        <input type="reset" value="취소" />
+      </p>
+      <p><a href="/siteuser/login">이미 아이디가 있으신가요?</a></p>
+      <p><a href="/siteuser/find">아이디를 잊으셨나요?</a></p>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>가입</title>
+<style>
+    body {
+        background-color: #f7f2e7;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        margin: 0;
+        padding: 0;
+    }
+
+    h3 {
+        color: #5c483b;
+        font-size: 30px;
+        margin: 0;
+        padding: 20px;
+        text-align: center;
+    }
+
+    form {
+        width: 80%;
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+    }
+    label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+        font-size: 16px;
+    }
+
+    input[type="reset"],
+    input[type="submit"],
+    a {
+        background-color: #8a6e55; /* 버튼 및 링크 배경색을 갈색으로 변경 */
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 5px 10px;
+        cursor: pointer;
+        font-size: 16px;
+        text-decoration: none;
+        transition: background-color 0.2s ease-in-out;
+    }
+
+    input[type="reset"]:hover, 
+    input[type="submit"]:hover,
+    a:hover {
+        background-color: #a38870; /* 호버 시 더 밝은 갈색으로 변경 */
+    }
+
+    .error {
+    	font-size: 16px;
+        color: red;
+        margin-top: 10px;
+    }
+</style>
+</head>
+<body>
+<h3>회원가입</h3>
+<form class="content" action="#" th:action="@{/siteuser/signup}" th:object="${siteuser}" method="post" max-width: 50%;>
+    <label for="name">이름</label>
+    <input type="text" th:field="*{name}" id="name" required/>
+
+    <label for="email">이메일</label>
+    <input type="email" th:field="*{email}" id="email" required/>
+
+    <label for="phone">전화번호</label>
+    <input type="text" th:field="*{phoneNumber}" id="phone" required/>
+
+    <label for="address">주소</label>
+    <input type="text" th:field="*{address}" id="address" required/>
+
+    <label for="password">비밀번호</label>
+    <input type="password" th:field="*{passwd}" id="password" required/>
+    
+	<label for="dateOfBirth">생년월일</label>
+	<input type="date" th:field="*{dateOfBirth}" id="dateOfBirth" required/>
+	
+
+    <input type="reset" value="취소" />
+    <input type="submit" value="가입" />
+
+    <p th:text="${error}" class="error"></p>
+	<a href="/siteuser/login" style="display: inline-block; background-color: #8a6e55; color: #fff; text-decoration: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; transition: background-color 0.2s ease-in-out;">이미 아이디가 있으신가요?</a>  
+	<p style="margin-bottom: 5px;"><a href="/siteuser/find" style="display: inline-block; background-color: #8a6e55; color: #fff; text-decoration: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; transition: background-color 0.2s ease-in-out;">아이디를 잊으셨나요?</a></p>
+	<p style="margin-bottom: 5px;"><a href="/siteuser/start" style="display: inline-block; background-color: #8a6e55; color: #fff; text-decoration: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; transition: background-color 0.2s ease-in-out;">홈으로</a></p>
+
+
+</form>
+<br><br>
+</body>
+</html>

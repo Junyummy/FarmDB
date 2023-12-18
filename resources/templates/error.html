@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8">
+    <title>에러</title>
+    <style>
+      body {
+        background-color: #f7f2e7;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        margin: 0;
+        padding: 0;
+      }
+
+      h3 {
+        color: #5c483b;
+        font-size: 30px;
+        margin: 0;
+        padding: 20px;
+        text-align: center;
+      }
+
+      p {
+        margin: 0;
+        padding: 20px;
+        text-align: center;
+        font-size: 20px;
+      }
+      form {
+	        width: 80%;
+	        max-width: 400px;
+	        margin: 0 auto;
+	        padding: 20px;
+	        background-color: #fff;
+	        border-radius: 5px;
+	        box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+    	}
+
+      a {
+        color: #ffffff;
+        text-decoration: none;
+        transition: color 0.2s ease-in-out;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        display: block;
+        margin: 0 auto;
+        width: 150px;
+        font-size: 15px;
+        background-color: #8a6e55; /* 버튼의 배경색을 갈색으로 변경 */
+      }
+
+      a:hover {
+        color: #fff;
+        background-color: #a38870; /* 호버 시 더 밝은 갈색으로 변경 */
+      }
+      
+    </style>
+  </head>
+  <body>
+    <h3>에러</h3>
+    <form>
+    <th:block th:if="${reason} == 'wrong email' ">
+      <p>찾는 사용자가 없습니다.</p>
+      <p><a href="/siteuser/find">검색 다시 시도</a></p>
+    </th:block>
+    
+    <th:block th:if="${reason} == 'wrong password' ">
+	<p>이메일 혹은 암호가 올바르지 않습니다.</p>
+	<p><a href="/siteuser/login">로그인 다시 시도</a></p>
+	</th:block>
+
+	<th:block th:if="${reason} == 'login required' ">
+		<p>로그인이 필요한 서비스입니다.</p>
+		<p><a href="/siteuser/login">로그인</a></p>
+	</th:block>
+	</form>
+  </body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>유저정보 업데이트</title>
+<style>
+    body {
+        background-color: #f7f2e7; /* Light beige background */
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 16px;
+        margin: 0;
+        padding: 0;
+    }
+    h1 {
+        color: #5c483b; /* Dark brown color */
+        font-size: 36px;
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    form {
+        max-width: 500px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+        text-align: center;
+    }
+
+    label {
+        display: block;
+        margin-top: 20px;
+        font-size: 18px;
+        color: #5c483b;
+        text-align: left;
+    }
+
+    input[type="text"] {
+        padding: 12px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        width: 100%;
+        font-size: 16px;
+        margin-top: 10px;
+    }
+
+    input[type="submit"] {
+        background-color: #8a6e55; /* Dark brown color */
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        font-size: 18px;
+        border-radius: 8px;
+        margin-top: 30px;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #a38870; /* Light brown color */
+    }
+</style>
+</head>
+<body>
+    <h1 style="text-align:center;">내 정보</h1>
+    <form method="post" th:action="@{/siteuser/update}">
+        <label for="name">이름</label>
+        <input type="text" id="name" name="name"
+               th:value="${user.name}" /><br/>
+        <label for="address">주소</label>
+        <input type="text" id="address" name="address"
+               th:value="${user.address}" /><br/>
+        <label for="email">Email</label>
+        <input type="text" id="email" name="email"
+               th:value="${user.email}" /><br/>
+        <label for="phoneNumber">연락처</label>
+        <input type="text" id="phoneNumber" name="phoneNumber"
+               th:value="${user.phoneNumber}" /><br/>
+        <label for="passwd">비밀번호</label>
+        <input type="text" id="passwd" name="passwd"
+               th:value="${user.passwd}" /><br/>
+        <input type="submit" value="Update" />
+    </form>
+</body>
+</html>

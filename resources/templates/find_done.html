@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>사용자 검색 완료</title>
+    <style>
+        body {
+            background-color: #f1f1f1;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            margin: 0;
+            padding: 0;
+        }
+
+        h3 {
+            color: #333;
+            font-size: 30px;
+            margin: 0;
+            padding: 30px;
+            text-align: center;
+        }
+
+        p {
+            color: #333;
+            font-size: 20px;
+            margin: 10px;
+            text-align: center;
+        }
+
+        a {
+            color: #fff; /* Text color updated to white for better contrast */
+            text-decoration: none;
+            transition: color 0.2s ease-in-out;
+            background-color: #8a6e55; /* Background color changed to brown */
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: inline-block;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        a:hover {
+            background-color: #a38870; /* Hover color updated to a lighter shade of brown */
+        }
+    </style>
+</head>
+<body>
+    <h3>사용자 검색 완료</h3>
+    <p th:text="|${user.name}님|" />
+    <p th:text="|이메일주소: ${user.email}|" />
+    <p th:text="|전화번호주소: ${user.phoneNumber}|" />
+    <div style="text-align: center;">
+        <a href="/siteuser/login">로그인으로 이동</a>
+    </div>
+</body>
+</html>

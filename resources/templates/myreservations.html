@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>마을봐봐 예약 목록</title>
+    <style>
+        body {
+            background-color: #f7f2e7;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #8a6e55;
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        table {
+            width: 100%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        th {
+            background-color: #a38870;
+            color: white;
+        }
+
+        .center {
+            margin: auto;
+            width: 50%;
+            padding: 10px;
+        }
+
+        .center a {
+            color: #fff;
+            text-decoration: none;
+            padding: 5px 10px;
+            background-color: #8a6e55;
+            border-radius: 5px;
+            margin: 10px;
+            display: inline-block;
+            transition: background-color 0.2s;
+        }
+
+        .center a:hover {
+            background-color: #a38870;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h3>나의 예약 목록</h3>
+        <div class="center">
+			<a th:href="@{/siteuser/start}">홈으로</a>
+            <a th:href="@{/siteuser/logout}">사용자 로그아웃</a>
+        </div>
+    </div>
+    
+<table style="width:100%">
+    <tr>
+		<th>ID</th>
+		<th>체험활동 명</th>
+        <th>신청인원 수</th>
+        <th>활동날짜</th>
+        <th>신청날짜</th>
+    </tr>
+    
+   <tr th:each="o, idx : ${myreservations}">
+    <td th:text="${o.id}"></td>
+    <td>
+        <a th:href="@{/siteuser/actread?num={id}(id=${o.actid})}" th:text="${activityNames[__${idx.index}__]}"></a>
+    </td>
+    <td th:text="${o.actperson}"></td>
+    <td th:text="${o.activitydate}"></td>
+    <td th:text="${o.writtendate}"></td>
+</tr>
+<tr>
+    <td colspan="5">
+        <th:block th:if="${myreservations != null}">
+            <th:block th:each="p: ${#numbers.sequence(1, myreservations.totalPages > 0 ? myreservations.totalPages - 1 : 0)}">
+                <a th:href="@{/siteuser/myreservations?pno={pno}(pno=${p})}" th:text="${p
+                +1}"></a>
+            </th:block>
+        </th:block>
+    </td>
+</tr>
+</table>
+</body>
+</html>

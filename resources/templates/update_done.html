@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>유저 정보 업데이트 성공</title>
+    <style>
+        body {
+            background-color: #f7f2e7; /* Light beige background */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 16px;
+            margin: 0;
+            padding: 0;
+        }
+
+        h3 {
+            color: #5c483b; /* Dark brown color */
+            font-size: 36px;
+            margin: 0;
+            padding: 40px 0;
+            text-align: center;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        p {
+            font-size: 18px;
+            color: #333;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        a {
+            color: white;
+            background-color: #8a6e55; /* Dark brown color */
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            margin: 10px;
+            box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        a:hover {
+            background-color: #a38870; /* Light brown color */
+        }
+    </style>
+</head>
+<body>
+    <h3>유저 정보 업데이트 성공</h3>
+    <p th:text="'사용자 ' + ${name} + '님의 정보가 성공적으로 업데이트 되었습니다'" />
+    <p><a href="/siteuser/login">다시 로그인 하기</a></p>
+</body>
+</html>

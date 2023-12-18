@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>구매페이지</title>
+    <style>
+        body {
+            background-color: #f7f2e7; /* Light beige background */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 16px;
+            margin: 0;
+            padding: 0;
+        }
+
+        h3 {
+            color: #5c483b; /* Dark brown text */
+            font-size: 30px;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        form {
+            width: 50%;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #5c483b; /* Dark brown text */
+        }
+
+        input[type="text"], input[type="hidden"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #8a6e55; /* Dark brown */
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+            margin-right: 10px;
+        }
+
+        button:hover {
+            background-color: #a38870; /* Lighter brown */
+        }
+
+        button[type="reset"] {
+            background-color: #ddd;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h3>구매 페이지</h3>
+
+    <form action="#" th:action="@{/siteuser/order/save}" th:object="${order}" method="post" enctype="multipart/form-data">
+
+        <!-- Hidden fields for ID, custid, lsid, and orderdate -->
+        <input type="hidden" th:field="*{id}" />
+        <input type="hidden" th:field="*{custid}" />
+        <input type="hidden" th:field="*{lsid}" />
+        <input type="hidden" th:field="*{orderdate}" />
+
+        <!-- Additional input fields for other properties -->
+        <label for="payment_method">결제수단</label>
+        <input type="text" th:field="*{payment_method}" />
+		
+		<label for="payment_method">개당가격</label>
+        <input type="text" id= "price" th:value="${price}" />
+		
+        <label for="quantity">구매수량</label>
+        <input type="text" id="quantity" th:field="*{quantity}" />
+
+        <!-- Buttons to increment and decrement quantity -->
+        <button type="button" onclick="incrementQuantity()">+</button>
+        <button type="button" onclick="decrementQuantity()">-</button>
+        <input type="hidden" th:field="*{totalprice}" />
+
+        <!-- Display total price dynamically -->
+        <p id="totalPrice">Total Price: 0</p>
+
+        <!-- Submit and reset buttons -->
+        <button type="submit">구매신청</button>
+        <button type="reset">취소</button>
+    </form>
+
+    <script>
+        // Get initial values
+        var price = [[${price}]];
+        var quantityInput = document.getElementById('quantity');
+        var totalInput = document.getElementById('totalPrice');
+	
+        quantityInput.value = 0;
+        
+        // Add event listeners for the buttons
+        document.querySelector('button[onclick="incrementQuantity()"]').addEventListener('click', function () {
+            quantityInput.value = parseInt(quantityInput.value) + 1;
+            updateTotal();
+        });
+
+        document.querySelector('button[onclick="decrementQuantity()"]').addEventListener('click', function () {
+            if (parseInt(quantityInput.value) > 0) {
+                quantityInput.value = parseInt(quantityInput.value) - 1;
+                updateTotal();
+            }
+        });
+
+        // Update the total when the quantity changes
+        quantityInput.addEventListener('input', updateTotal);
+
+        function updateTotal() {
+            var quantity = parseInt(quantityInput.value);
+            console.log("price:", price);
+            console.log("quantity:", quantity);		
+            
+            if (!isNaN(price) && isFinite(price) && !isNaN(quantity) && isFinite(quantity)) {
+                var total = price * quantity;
+
+                // total이 NaN이면 0 또는 다른 값으로 대체
+                if (isNaN(total)) {
+                    total = 0; // 또는 다른 값으로 대체 가능
+                }
+
+                totalInput.innerText = 'Total Price: ' + total;
+                document.querySelector('input[name="totalprice"]').value = total;
+            } else {
+                totalInput.innerText = 'Total Price: 계산 불가';
+            }
+     	}
+    </script>
+
+</body>
+</html>
