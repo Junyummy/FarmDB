@@ -74,6 +74,8 @@
         <th>신청인원 수</th>
         <th>활동날짜</th>
         <th>신청날짜</th>
+        <th>총 금액</th>
+		
     </tr>
     
    <tr th:each="o, idx : ${myreservations}">
@@ -84,6 +86,7 @@
     <td th:text="${o.actperson}"></td>
     <td th:text="${o.activitydate}"></td>
     <td th:text="${o.writtendate}"></td>
+    <td th:text="${o.totalprice}"></td>
 </tr>
 <tr>
     <td colspan="5">
